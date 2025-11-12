@@ -1,5 +1,6 @@
 // Wait for DOM to load before initializing
 document.addEventListener("DOMContentLoaded", () => {
+  console.log('chat script loaded');
   // DOM elements (queried after DOM is ready)
   const chatForm = document.getElementById("chatForm");
   const userInput = document.getElementById("userInput");
