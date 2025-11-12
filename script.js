@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatWindow = document.getElementById("chatWindow");
 
   // Cloudflare Worker URL
-  const workerUrl = "https://chatbot.archan1.workers.dev";
+  const workerUrl = "https://chatbot.archan1.workers.dev/";
 
   // Note: removed Miniflare from client-side. Miniflare is a server-side/dev tool
   // that uses runtime eval-like behavior which violates strict Content Security
