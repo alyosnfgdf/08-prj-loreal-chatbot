@@ -6,6 +6,13 @@ const chatWindow = document.getElementById("chatWindow");
 // Cloudflare Worker URL
 const workerUrl = "https://lorealchatbot.archan1.workers.dev";
 
+const mf = new Miniflare({
+  bindings: {
+    KEY1: "OPENAI_API_KEY",
+    KEY2: "value2",
+  },
+});
+
 // System prompt for L'Oréal chatbot
 const systemPrompt = `You are a friendly and knowledgeable L'Oréal beauty assistant. Your purpose is to help customers with questions about L'Oréal products, skincare routines, hair care advice, makeup recommendations, and beauty tips. 
 
