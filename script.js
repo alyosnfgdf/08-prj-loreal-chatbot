@@ -6,7 +6,7 @@ const chatWindow = document.getElementById("chatWindow");
 // Wait for DOM to load before initializing
 document.addEventListener("DOMContentLoaded", () => {
   // Cloudflare Worker URL
-  const workerUrl = "lorealchatbot.archan1.workers.dev";
+  const workerUrl = "https://lorealchatbot.archan1.workers.dev";
 
   const mf = new Miniflare({
     bindings: {
