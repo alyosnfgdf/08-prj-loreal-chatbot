@@ -118,12 +118,28 @@ Response style:
       chatWindow.scrollTop = chatWindow.scrollHeight;
 
     } catch (error) {
-      // Show error message in rounded container
+      // Show concise error message in the UI
       const errorMsgDiv = document.createElement("div");
       errorMsgDiv.className = "msg-container error";
       errorMsgDiv.textContent = `Error: ${error.message}`;
       chatWindow.appendChild(errorMsgDiv);
-      console.error("Error:", error);
+
+      // Provide helpful guidance for common "Failed to fetch" problems
+      if (error instanceof TypeError && /failed to fetch/i.test(error.message)) {
+        const hintDiv = document.createElement("div");
+        hintDiv.className = "msg-container ai";
+        hintDiv.textContent = "I couldn't reach the server. Common causes: the Cloudflare Worker URL is incorrect, the Worker is not deployed, or CORS/preflight is blocking the request. Check the browser Network tab for the POST request and any OPTIONS preflight.\n\nI'll provide a local sample reply so you can continue testing the UI.";
+        chatWindow.appendChild(hintDiv);
+
+        // Local fallback AI reply (for UI testing only)
+        const fallbackDiv = document.createElement("div");
+        fallbackDiv.className = "msg-container ai";
+        fallbackDiv.textContent = "Sample L'Oréal suggestion: For dry skin, try the L'Oréal Hydra-Intense serum in the morning and a richer night cream. Use SPF during the day.";
+        chatWindow.appendChild(fallbackDiv);
+      }
+
+      // Log full error for debugging
+      console.error("Fetch/worker error:", error);
     }
   });
 });
