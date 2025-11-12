@@ -43,7 +43,7 @@ conversationHistory.push({
 });
 
 // Set initial message
-chatWindow.textContent = "👋 Hello! I'm your L'Oréal beauty assistant. Ask me anything about our products, skincare routines, and beauty recommendations!";
+chatWindow.innerHTML = `<div class="msg-container initial">👋 Hello! I'm your L'Oréal beauty assistant. Ask me anything about our products, skincare routines, and beauty recommendations!</div>`;
 
 /* Handle form submit */
 chatForm.addEventListener("submit", async (e) => {
@@ -59,8 +59,11 @@ chatForm.addEventListener("submit", async (e) => {
     content: userMessage
   });
 
-  // Display user message
-  chatWindow.innerHTML += `\n\nUser: ${userMessage}`;
+  // Display user message in rounded container
+  const userMsgDiv = document.createElement("div");
+  userMsgDiv.className = "msg-container user";
+  userMsgDiv.textContent = userMessage;
+  chatWindow.appendChild(userMsgDiv);
   userInput.value = "";
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
@@ -92,13 +95,19 @@ chatForm.addEventListener("submit", async (e) => {
       content: aiMessage
     });
 
-    // Display AI message
-    chatWindow.innerHTML += `\n\nAssistant: ${aiMessage}`;
+    // Display AI message in rounded container
+    const aiMsgDiv = document.createElement("div");
+    aiMsgDiv.className = "msg-container ai";
+    aiMsgDiv.textContent = aiMessage;
+    chatWindow.appendChild(aiMsgDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 
   } catch (error) {
-    // Show error message
-    chatWindow.innerHTML += `\n\nError: ${error.message}`;
+    // Show error message in rounded container
+    const errorMsgDiv = document.createElement("div");
+    errorMsgDiv.className = "msg-container error";
+    errorMsgDiv.textContent = `Error: ${error.message}`;
+    chatWindow.appendChild(errorMsgDiv);
     console.error("Error:", error);
   }
 });
