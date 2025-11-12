@@ -1,10 +1,10 @@
-/* DOM elements */
-const chatForm = document.getElementById("chatForm");
-const userInput = document.getElementById("userInput");
-const chatWindow = document.getElementById("chatWindow");
-
 // Wait for DOM to load before initializing
 document.addEventListener("DOMContentLoaded", () => {
+  // DOM elements (queried after DOM is ready)
+  const chatForm = document.getElementById("chatForm");
+  const userInput = document.getElementById("userInput");
+  const chatWindow = document.getElementById("chatWindow");
+
   // Cloudflare Worker URL
   const workerUrl = "https://lorealchatbot.archan1.workers.dev";
 
