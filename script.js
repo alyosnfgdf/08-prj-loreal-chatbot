@@ -6,6 +6,13 @@ const chatWindow = document.getElementById("chatWindow");
 // Cloudflare Worker URL
 const workerUrl = "https://lorealchatbot.archan1.workers.dev";
 
+const mf = new Miniflare({
+  bindings: {
+    KEY1: "APIkey",
+    KEY2: "value2",
+  },
+});
+
 // Store conversation history
 let conversationHistory = [];
 
