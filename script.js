@@ -84,7 +84,7 @@ Response style:
 
     try {
       // Call Cloudflare Worker which proxies to OpenAI
-      const response = await fetch(chatbot.archan1.workers.dev, {
+      const response = await fetch(workerUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
